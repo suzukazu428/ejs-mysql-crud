@@ -1,0 +1,51 @@
+<% const title = '<h1>MysqlのCRUDをコンソールで確認</h1>' %>
+<%- title %>
+
+<button onclick="select()">表示</button>
+<button onclick="insert()">追加</button>
+<button onclick="update()">更新</button>
+<button onclick="sqlDelete()">削除</button>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  async function select() {
+    console.log('select開始')
+    await axios.get('/api/select')
+    .then(res => {
+      console.log('select完了', res.data)
+    })
+    .catch(err => {
+      console.log('error: ', err)
+    })
+  }
+  async function insert() {
+    console.log('insert開始')
+    await axios.post('/api/insert')
+    .then(res => {
+      console.log('insert完了', res)
+    })
+    .catch(err => {
+      console.log('error: ', err)
+    })
+  }
+  async function update() {
+    console.log('update開始')
+    await axios.put('/api/update')
+    .then(res => {
+      console.log('update完了', res)
+    })
+    .catch(err => {
+      console.log('error: ', err)
+    })
+  }
+  async function sqlDelete() {
+    console.log('delete開始')
+    await axios.delete('/api/delete')
+    .then(res => {
+      console.log('delete完了', res)
+    })
+    .catch(err => {
+      console.log('error: ', err)
+    })
+  }
+</script>

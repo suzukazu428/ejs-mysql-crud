@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const mysql = require('mysql2')
 
-// todo: 環境変数化する
 // mysql接続情報
 const connection = mysql.createConnection({
   host: process.env.MYSQL_HOST,
@@ -39,7 +38,7 @@ router.get('/select', (req, res, next) => {
 })
 // データ追加
 router.post('/insert', (req, res, next) => {
-  // insert into todos(id,title,content) values(3,テスト3, 内容3)
+  // insert into todos(id,title,content) values(int,string, string)
   const sql = 'insert into todos(id,title,content) values(7,"テスト7", "内容7")'
   connection.query(sql, (err, results) => {
     if(err) {
